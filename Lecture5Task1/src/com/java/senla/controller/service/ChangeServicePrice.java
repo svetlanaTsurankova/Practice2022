@@ -1,22 +1,21 @@
 package com.java.senla.controller.service;
 
-import com.java.senla.view.IAction;
 import com.java.senla.model.service.ManagerHotel;
 import com.java.senla.model.service.impl.ManagerService;
+import com.java.senla.view.IAction;
 
 import java.util.Scanner;
 
 public class ChangeServicePrice implements IAction {
+    ManagerHotel managerHotel = new ManagerHotel();
+    ManagerService managerService = new ManagerService();
+    Scanner scanner = new Scanner(System.in);
+
     @Override
     public void execute() {
-        ManagerHotel managerHotel = new ManagerHotel();
-        ManagerService managerService = new ManagerService();
-        Scanner scanner = new Scanner(System.in);
-        managerService.getServices();
-        managerHotel.showAllServices();
-        System.out.print("Input service name: ");
+        System.out.print("Input id service : ");
         Integer id = scanner.nextInt();
-        System.out.print("Input service price: ");
+        System.out.print("Input service price : ");
         double price = scanner.nextDouble();
         managerHotel.changePriceService(managerService.getServiceById(id), price);
     }

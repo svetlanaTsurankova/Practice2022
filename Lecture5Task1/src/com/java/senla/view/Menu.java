@@ -1,11 +1,8 @@
 package com.java.senla.view;
 
-import java.util.Arrays;
-import java.util.stream.IntStream;
-
 public class Menu {
     private String name;
-    private MenuItem[] menuItems=new MenuItem[15];
+    private MenuItem[] menuItems = new MenuItem[15];
 
     public String getName() {
         return name;
@@ -30,8 +27,8 @@ public class Menu {
 
     public int getCountMenu() {
         int count = 0;
-        for (int i = 0; i < menuItems.length; i++) {
-            if (menuItems[i] != null) {
+        for (MenuItem menuItem : menuItems) {
+            if (menuItem != null) {
                 count++;
             }
         }

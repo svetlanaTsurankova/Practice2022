@@ -6,15 +6,15 @@ import com.java.senla.view.IAction;
 
 import java.util.Scanner;
 
-public class BillLodger implements IAction {
+public class SortLodgerByService implements IAction {
     ManagerHotel managerHotel = new ManagerHotel();
     ManagerLodger managerLodger = new ManagerLodger();
     Scanner scanner = new Scanner(System.in);
 
     @Override
     public void execute() {
-        System.out.print("Input the lodger id ...");
+        System.out.print("Input lodger id ...");
         Integer id = scanner.nextInt();
-        managerHotel.billRoom(managerLodger.getLodgerById(id));
+        managerHotel.sortLodgerService(managerLodger.getLodgerById(id));
     }
 }

@@ -19,7 +19,7 @@ public class Navigator {
         MenuItem[] items = currentMenu.getMenuItems();
         int i = 1;
         for (MenuItem item : items) {
-            if (item!=null) {
+            if (item != null) {
                 System.out.println(i + "  " + item.getTitle());
                 i++;
             }
@@ -27,9 +27,9 @@ public class Navigator {
     }
 
     public void navigate(int index) {
-        if (currentMenu.getMenuItems()[index-1].getAction()!=null){
-            currentMenu.getMenuItems()[index-1].doAction();
-        }else {
+        if (currentMenu.getMenuItems()[index - 1].getAction() != null) {
+            currentMenu.getMenuItems()[index - 1].doAction();
+        } else {
             currentMenu.getMenuItems()[index-1].getNextMenu();
         }
     }

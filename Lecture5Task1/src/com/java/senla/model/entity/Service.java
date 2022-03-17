@@ -34,6 +34,7 @@ public class Service {
         this.serviceName = serviceName;
         this.price = price;
     }
+
     public String toString() {
         StringBuilder s = new StringBuilder();
         s.append("Service : ");

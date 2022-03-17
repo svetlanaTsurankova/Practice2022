@@ -25,14 +25,14 @@ public class ManagerLodger implements IManagerLodger {
 
 
     public Lodger getLodgerById(Integer idLodger) {
-        Lodger lodger = null;
-        for (int i = 0; i < lodgers.length; i++) {
-            if (lodgers[i].getIdLodger() == idLodger) {
-                lodger = lodgers[i];
+        for (Lodger lodger : lodgers) {
+            if (lodger.getIdLodger() == idLodger) {
+                return lodger;
             }
         }
-        return lodger;
+        return null;
     }
+
 
     public Lodger[] getLodgers() {
         return lodgers;

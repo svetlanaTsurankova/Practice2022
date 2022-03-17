@@ -25,7 +25,7 @@ public class MenuController {
             } else {
                 navigator.navigate(choice);
             }
-            if (navigator.getCurrentMenu().getMenuItems()[choice].getNextMenu() == null) {
+            if (navigator.getCurrentMenu().getMenuItems()[choice-1].getNextMenu() == null) {
                 exit = true;
                 continue;
             }

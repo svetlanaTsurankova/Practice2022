@@ -12,16 +12,12 @@ public class ManagerService implements IManagerService {
 
     public ManagerService() {
         services = new Service[]{
-            services[0] = new Service(1, "cleaning", 5.26),
-            services[1] = new Service(2, "wi-fi in the room", 6.25),
-            services[2] = new Service(3, "food in the room", 7.63),
-            services[3] = new Service(4, "car rental", 9.72),
-            services[4] = new Service(5, "gym", 5.14),
+                services[0] = new Service(1, "cleaning", 5.26),
+                services[1] = new Service(2, "wi-fi in the room", 6.25),
+                services[2] = new Service(3, "food in the room", 7.63),
+                services[3] = new Service(4, "car rental", 9.72),
+                services[4] = new Service(5, "gym", 5.14),
         };
-    }
-
-    public int getAllService() {
-        return allService;
     }
 
     public void addService(Service service) {
@@ -30,13 +26,12 @@ public class ManagerService implements IManagerService {
     }
 
     public Service getServiceById(Integer id) {
-        Service service = null;
-        for (int i = 0; i < services.length; i++) {
-            if (services[i].getId() == id) {
-                service = services[i];
+        for (Service service : services) {
+            if (service.getId() == id) {
+                return service;
             }
         }
-        return service;
+        return null;
     }
 
     public Service[] getServices() {

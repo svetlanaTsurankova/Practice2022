@@ -8,7 +8,7 @@ public class Room {
     private int capacity;
     private StatusRoomEnum status;
     private int starsRoom;
-    private Lodger[] lodgers=new Lodger[4];
+    private Lodger[] lodgers = new Lodger[4];
 
     public int getId() {
         return id;
@@ -81,7 +81,7 @@ public class Room {
         this.capacity = capacity;
         this.status = status;
         this.starsRoom = starsRoom;
-        this.lodgers=lodgers;
+        this.lodgers = lodgers;
     }
 
     public String toString() {

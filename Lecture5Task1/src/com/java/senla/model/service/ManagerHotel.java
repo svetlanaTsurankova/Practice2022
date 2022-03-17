@@ -164,13 +164,11 @@ public class ManagerHotel {
         Lodger[] r = room.getLodgers();
         if (r.length <= 3) {
             for (int i = 0; i < r.length; i++) {
-                System.out.println("showLastLodgersRoom " + r[i].getFullName() + " "
-                        + r[i].getRoom().toString() + "  " + r[i].getDateCheckIn() + " - " + r[i].getDateCheckOut());
+                System.out.println("showLastLodgersRoom " + r.toString());
             }
         } else {
             for (int i = r.length - 3; i < r.length; i++) {
-                System.out.println("showLastLodgersRoom " + r[i].getFullName() + " "
-                        + r[i].getRoom().toString() + "  " + r[i].getDateCheckIn() + " - " + r[i].getDateCheckOut());
+                System.out.println("showLastLodgersRoom " + r.toString());
             }
         }
     }

@@ -7,5 +7,7 @@ import java.util.Comparator;
 public interface IManagerService {
     void addService(Service service);
 
+    Service getServiceById(Integer id);
+
     Service[] sortService(Comparator<Service> comparator);
 }

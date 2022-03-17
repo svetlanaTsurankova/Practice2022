@@ -7,11 +7,12 @@ import com.java.senla.view.IAction;
 import java.util.Scanner;
 
 public class ShowDetailsOfRoom implements IAction {
+    Scanner scanner = new Scanner(System.in);
+    ManagerRoom managerRoom = new ManagerRoom();
+    ManagerHotel managerHotel = new ManagerHotel();
+
     @Override
     public void execute() {
-        Scanner scanner = new Scanner(System.in);
-        ManagerRoom managerRoom = new ManagerRoom();
-        ManagerHotel managerHotel = new ManagerHotel();
         System.out.print("Input number room 1 - 10 : ");
         Integer number = scanner.nextInt();
         managerHotel.printDetailsOfRoom(managerRoom.getRoomById(number));
