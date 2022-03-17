@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class MenuController {
     private Builder builder = new Builder();
     private Navigator navigator = new Navigator();
-    ;
 
     public MenuController() {
     }
