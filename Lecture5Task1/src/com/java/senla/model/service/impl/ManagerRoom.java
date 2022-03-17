@@ -34,13 +34,12 @@ public class ManagerRoom implements IManagerRoom {
     }
 
     public Room getRoomByNumber(Integer number) {
-        Room room = null;
-        for (Room value : rooms) {
-            if (value.getNumberRoom() == number) {
-                room = value;
+        for (Room room : rooms) {
+            if (room.getNumberRoom() == number) {
+                return room;
             }
         }
-        return room;
+        return null;
     }
 
     public void addRoom(Room room) {
