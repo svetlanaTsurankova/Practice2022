@@ -27,10 +27,11 @@ public class Navigator {
     }
 
     public void navigate(int index) {
-        if (currentMenu.getMenuItems()[index - 1].getAction() != null) {
-            currentMenu.getMenuItems()[index - 1].doAction();
+        MenuItem[] items = currentMenu.getMenuItems();
+        if (items[index - 1].getAction() != null) {
+            items[index - 1].doAction();
         } else {
-            currentMenu.getMenuItems()[index-1].getNextMenu();
+            items[index - 1].getNextMenu();
         }
     }
 }

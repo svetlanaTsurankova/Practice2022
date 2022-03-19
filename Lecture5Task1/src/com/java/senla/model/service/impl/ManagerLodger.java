@@ -23,7 +23,6 @@ public class ManagerLodger implements IManagerLodger {
         };
     }
 
-
     public Lodger getLodgerById(Integer idLodger) {
         for (Lodger lodger : lodgers) {
             if (lodger.getIdLodger() == idLodger) {
@@ -32,7 +31,6 @@ public class ManagerLodger implements IManagerLodger {
         }
         return null;
     }
-
 
     public Lodger[] getLodgers() {
         return lodgers;

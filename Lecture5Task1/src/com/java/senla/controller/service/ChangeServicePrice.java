@@ -14,7 +14,7 @@ public class ChangeServicePrice implements IAction {
     @Override
     public void execute() {
         System.out.print("Input id service : ");
-        Integer id = scanner.nextInt();
+        int id = scanner.nextInt();
         System.out.print("Input service price : ");
         double price = scanner.nextDouble();
         managerHotel.changePriceService(managerService.getServiceById(id), price);

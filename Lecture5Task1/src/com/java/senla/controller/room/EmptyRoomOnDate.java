@@ -13,8 +13,7 @@ public class EmptyRoomOnDate implements IAction {
     @Override
     public void execute() {
         System.out.print("Input the in-date like \"YYYY-MM-DD\" ...");
-        String dat = scanner.next();
-        LocalDate inDate = LocalDate.parse(dat);
+        LocalDate inDate = LocalDate.parse(scanner.next());
         managerHotel.showEmptyRoomOnDate(inDate);
 
     }

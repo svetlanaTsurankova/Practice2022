@@ -14,7 +14,7 @@ public class UpdatePriceRoom implements IAction {
     @Override
     public void execute() {
         System.out.println("input id room 1..10 : ");
-        Integer number = scanner.nextInt();
+        int number = scanner.nextInt();
         System.out.println("input price room : ");
         double price = scanner.nextDouble();
         managerHotel.changePriceRoom(managerRoom.getRoomById(number), price);

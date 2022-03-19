@@ -13,7 +13,6 @@ public class AddLodger implements IAction {
     @Override
     public void execute() {
         System.out.print("Input lodger name ...");
-        String name = scanner.next();
-        managerHotel.receiveLodger(new Lodger(name));
+        managerHotel.receiveLodger(new Lodger(scanner.next()));
     }
 }

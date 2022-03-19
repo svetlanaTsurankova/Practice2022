@@ -14,7 +14,6 @@ public class ShowDetailsOfRoom implements IAction {
     @Override
     public void execute() {
         System.out.print("Input number room 1 - 10 : ");
-        Integer number = scanner.nextInt();
-        managerHotel.printDetailsOfRoom(managerRoom.getRoomById(number));
+        managerHotel.printDetailsOfRoom(managerRoom.getRoomById(scanner.nextInt()));
     }
 }

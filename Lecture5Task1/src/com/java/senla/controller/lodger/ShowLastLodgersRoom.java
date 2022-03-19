@@ -14,7 +14,6 @@ public class ShowLastLodgersRoom implements IAction {
     @Override
     public void execute() {
         System.out.print("Input the room id ...");
-        Integer number = scanner.nextInt();
-        managerHotel.showLastLodgersRoom(managerRoom.getRoomByNumber(number));
+        managerHotel.showLastLodgersRoom(managerRoom.getRoomByNumber(scanner.nextInt()));
     }
 }

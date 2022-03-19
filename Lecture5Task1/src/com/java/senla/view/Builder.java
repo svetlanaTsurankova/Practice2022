@@ -39,13 +39,13 @@ public class Builder {
         lodgerMenu.addMenuItem(new MenuItem("Add Lodger ", new AddLodger(), lodgerMenu));
         lodgerMenu.addMenuItem(new MenuItem("Check in room lodger ", new CheckInRoom(), lodgerMenu));
         lodgerMenu.addMenuItem(new MenuItem("Check out room lodger ", new CheckOutRoom(), lodgerMenu));
-        lodgerMenu.addMenuItem(new MenuItem("Sorting lodger by Name ", new SortedLodgerByName(), lodgerMenu));
-        lodgerMenu.addMenuItem(new MenuItem("Sorting lodger by date check out ", new SortingLodgerByDate(), lodgerMenu));
+        lodgerMenu.addMenuItem(new MenuItem("Sorting lodger by Name ", new SortedLodgersByName(), lodgerMenu));
+        lodgerMenu.addMenuItem(new MenuItem("Sorting lodger by date check out ", new SortingLodgersByDate(), lodgerMenu));
         lodgerMenu.addMenuItem(new MenuItem("Total count lodger ", new TotalNumberOfLodgers(), lodgerMenu));
         lodgerMenu.addMenuItem(new MenuItem("Bill room ", new BillLodger(), lodgerMenu));
         lodgerMenu.addMenuItem(new MenuItem("add service to lodger ", new ServicesLodger(), lodgerMenu));
         lodgerMenu.addMenuItem(new MenuItem("Last lodgers room ", new ShowLastLodgersRoom(), lodgerMenu));
-        lodgerMenu.addMenuItem(new MenuItem("Sorting lodgers services by price", new SortLodgerByService(), lodgerMenu));
+        lodgerMenu.addMenuItem(new MenuItem("Sorting lodgers services by price", new SortingLodgerByService(), lodgerMenu));
         lodgerMenu.addMenuItem(new MenuItem("Back to root menu", rootMenu));
 
         rootMenu.addMenuItem(new MenuItem("Room menu", roomMenu));

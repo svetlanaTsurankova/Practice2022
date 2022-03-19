@@ -14,7 +14,6 @@ public class UpdateStatusRoom implements IAction {
     @Override
     public void execute() {
         System.out.println("input id room 1..10 : ");
-        Integer number = scanner.nextInt();
-        managerHotel.changeStatusRoom(managerRoom.getRoomById(number));
+        managerHotel.changeStatusRoom(managerRoom.getRoomById(scanner.nextInt()));
     }
 }

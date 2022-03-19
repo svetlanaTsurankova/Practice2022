@@ -17,18 +17,19 @@ public class MenuController {
         navigator.printMenu();
 
         while (!exit) {
-            Integer choice = Integer.valueOf(scanner.nextLine());
-            if (choice >= navigator.getCurrentMenu().getMenuItems().length) {
+            int choice = Integer.parseInt(scanner.nextLine());
+            MenuItem[] item = navigator.getCurrentMenu().getMenuItems();
+            if (choice >= item.length) {
                 System.out.println("Incorrect input");
                 continue;
             } else {
                 navigator.navigate(choice);
             }
-            if (navigator.getCurrentMenu().getMenuItems()[choice-1].getNextMenu() == null) {
+            if (item[choice-1].getNextMenu() == null) {
                 exit = true;
                 continue;
             }
-            navigator.setCurrentMenu(navigator.getCurrentMenu().getMenuItems()[choice - 1].getNextMenu());
+            navigator.setCurrentMenu(item[choice - 1].getNextMenu());
             navigator.printMenu();
         }
 

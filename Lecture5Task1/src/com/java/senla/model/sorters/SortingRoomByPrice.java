@@ -15,7 +15,6 @@ public class SortingRoomByPrice implements Comparator<Room> {
         }
     }
     public Comparator<Room> getSortingRoomByPrice(){
-        SortingRoomByPrice sortingRoomByPrice = new SortingRoomByPrice();
-        return sortingRoomByPrice;
+        return new SortingRoomByPrice();
     }
 }

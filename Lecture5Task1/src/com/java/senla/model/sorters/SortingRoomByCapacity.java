@@ -16,7 +16,6 @@ public class SortingRoomByCapacity implements Comparator<Room> {
     }
 
     public Comparator<Room> getSortingRoomByCapacity() {
-        SortingRoomByCapacity sortingRoomByCapacity = new SortingRoomByCapacity();
-        return sortingRoomByCapacity;
+        return new SortingRoomByCapacity();
     }
 }

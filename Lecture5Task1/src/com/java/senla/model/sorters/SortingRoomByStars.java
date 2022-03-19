@@ -15,7 +15,6 @@ public class SortingRoomByStars implements Comparator<Room> {
         }
     }
     public Comparator<Room> getSortingRoomByStars() {
-        SortingRoomByStars sortingRoomByStars = new SortingRoomByStars();
-        return sortingRoomByStars;
+        return new SortingRoomByStars();
     }
 }
