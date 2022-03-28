@@ -72,25 +72,32 @@ public class ManagerRoom implements IManagerRoom {
         return null;
     }
 
-    public List<Room> importRoomCsv(String file) {
 
+    public void importRoomByCsv(String file) {
         ImportCSVFile importCSVFile = new ImportCSVFile();
-        importCSVFile.importFile(file);
-        List<String[]> list = importCSVFile.getNewList();
-        if (list != null) {
-            for (String[] arr : list) {
-                Room newRoom = new Room();
-                newRoom.setId(Integer.parseInt(arr[0]));
-                newRoom.setNumberRoom(Integer.parseInt(arr[1]));
-                newRoom.setPrice(Double.parseDouble(arr[2]));
-                newRoom.setCapacity(Integer.parseInt(arr[3]));
-                newRoom.setStatus(StatusRoomEnum.valueOf(arr[4]));
-                newRoom.setStarsRoom(Integer.parseInt(arr[5]));
-                rooms.add(newRoom);
+        ArrayList<Object> list = importCSVFile.importFile(file);
+        if (list != null)
+            for (Object o : list) {
+                rooms.add(parseString((ArrayList<Object>) o));
+            }
+    }
+
+    public Room parseString(ArrayList<Object> listparse){
+        Room newRoom = new Room();
+        if (listparse !=null){
+            for (int i=0;i< listparse.size();i++){
+                newRoom.setId(Integer.parseInt(String.valueOf(listparse.get(0))));
+                newRoom.setNumberRoom(Integer.parseInt(String.valueOf(listparse.get(1))));
+                newRoom.setPrice(Double.parseDouble(String.valueOf(listparse.get(2))));
+                newRoom.setCapacity(Integer.parseInt(String.valueOf(listparse.get(3))));
+                newRoom.setStatus(StatusRoomEnum.valueOf(String.valueOf(listparse.get(4))));
+                newRoom.setStarsRoom(Integer.parseInt(String.valueOf(listparse.get(5))));
             }
         }
-        return rooms;
+        return newRoom;
     }
+
+
     public void exportRoomCsvFile(String file) throws FileNotFoundException {
         PrintWriter printWriter = new PrintWriter(file);
         List<Room> arr = rooms;

@@ -12,6 +12,6 @@ public class ExportRooms implements IAction {
     @Override
     public void execute() throws IOException {
         System.out.print("Export rooms CSV file  : ");
-        managerHotel.exportRoomCsvFile(FilePaths.exproomPatch);
+        managerHotel.exportRoomCsvFile(FilePaths.EXP_ROOM_PATCH);
     }
 }

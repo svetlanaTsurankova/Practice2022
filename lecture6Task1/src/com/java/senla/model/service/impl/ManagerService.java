@@ -13,15 +13,16 @@ import java.util.List;
 
 public class ManagerService implements IManagerService {
     private int allService;
-    private List<Service> services;
-
+  private List<Service> services;
 
     public ManagerService() {
-            this.services =new ArrayList<Service>();
-    }
+        services= new ArrayList<>();
+        services.add(new Service(1, "cleaning", 5.26));
+        services.add(new Service(2, "wi-fi in the room", 6.25));
+        services.add(new Service(3, "food in the room", 7.63));
+        services.add(new Service(4, "car rental", 9.72));
+        services.add(new Service(5, "gym", 5.14));
 
-    public int getAllService() {
-        return allService;
     }
 
     public void addService(Service service) {
@@ -54,8 +55,7 @@ public class ManagerService implements IManagerService {
 
     public void exportServiceCsvFile(String file) throws FileNotFoundException {
         PrintWriter printWriter = new PrintWriter(file);
-        List<Service> arr = services;
-        for (Service service : arr) {
+        for (Service service : services) {
             printWriter.println(service);
         }
         printWriter.close();
@@ -64,18 +64,25 @@ public class ManagerService implements IManagerService {
 
     public List<Service> importServiceByCsv(String file) {
         ImportCSVFile importCSVFile = new ImportCSVFile();
-        importCSVFile.importFile(file);
-        List<String[]> list = importCSVFile.getNewList();
-        if (list != null) {
-            for (String[] str : list) {
-                Service service = new Service();
-                service.setId(Integer.parseInt(str[0]));
-                service.setServiceName(str[1]);
-                service.setPrice(Double.parseDouble(str[2]));
-               services.add(service);
+        ArrayList<Object> list = importCSVFile.importFile(file);
+        if (list != null)
+            for (Object o : list) {
+                services.add(parseString((ArrayList<Object>) o));
             }
-        }
         return services;
     }
 
+    public Service parseString(ArrayList<Object> listparse) {
+        Service service = new Service();
+        if (listparse != null) {
+            for (int i = 0; i < listparse.size(); i++) {
+                service.setId(Integer.parseInt(String.valueOf(listparse.get(0))));
+                service.setServiceName(String.valueOf(listparse.get(1)));
+                service.setPrice(Double.parseDouble(String.valueOf(listparse.get(2))));
+            }
+        }
+        return service;
+    }
+
 }
+

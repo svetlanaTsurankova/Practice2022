@@ -2,7 +2,9 @@ package com.java.senla.model.service.impl;
 
 import com.java.senla.model.data.readers.ImportCSVFile;
 import com.java.senla.model.entity.Lodger;
+import com.java.senla.model.entity.Room;
 import com.java.senla.model.entity.Service;
+import com.java.senla.model.entity.StatusRoomEnum;
 import com.java.senla.model.service.IManagerLodger;
 
 import java.io.FileNotFoundException;
@@ -64,23 +66,29 @@ public class ManagerLodger implements IManagerLodger {
         return sortedLodgerService;
     }
 
-    public List<Lodger> importLodgerCsv(String file) {
+    public void importLodgerCsv(String file) {
         ImportCSVFile importCSVFile = new ImportCSVFile();
-        importCSVFile.importFile(file);
-        List<String[]> list = importCSVFile.getNewList();
-        if (list != null) {
-            for (String[] arr : list) {
-                Lodger newLodger = new Lodger();
-                newLodger.setIdLodger(Integer.parseInt(arr[0]));
-                newLodger.setFullName(arr[1]);
-                newLodger.setDateCheckIn(LocalDate.parse(arr[2]));
-                newLodger.setDateCheckOut(LocalDate.parse(arr[3]));
-                newLodger.setCost(Double.parseDouble(arr[6]));
-                lodgers.add(newLodger);
+        ArrayList<Object> list = importCSVFile.importFile(file);
+        if (list != null)
+            for (Object o : list) {
+                lodgers.add(parseString((ArrayList<Object>) o));
+            }
+    }
+
+    public Lodger parseString(ArrayList<Object> listparse){
+        Lodger newLodger = new Lodger();
+        if (listparse !=null){
+            for (int i=0;i< listparse.size();i++){
+                newLodger.setIdLodger(Integer.parseInt(String.valueOf(listparse.get(0))));
+                newLodger.setFullName(String.valueOf(listparse.get(1)));
+                newLodger.setDateCheckIn(LocalDate.parse((CharSequence) listparse.get(2)));
+                newLodger.setDateCheckOut(LocalDate.parse((CharSequence) listparse.get(3)));
+                newLodger.setCost(Double.parseDouble(String.valueOf(listparse.get(6))));
             }
         }
-        return lodgers;
+        return newLodger;
     }
+
 
     public void exportLodgerCsvFile(String file) throws FileNotFoundException {
         PrintWriter printWriter = new PrintWriter(file);

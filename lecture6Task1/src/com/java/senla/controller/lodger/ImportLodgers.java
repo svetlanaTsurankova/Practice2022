@@ -9,7 +9,7 @@ public class ImportLodgers implements IAction {
     @Override
     public void execute()  {
         System.out.print("Import lodgers from CSV file  : ");
-        managerHotel.importLodgerCsvFile(FilePaths.roomPatch);
+        managerHotel.importLodgerCsvFile(FilePaths.LODGER_PATCH);
         managerHotel.showAllLodger();
     }
 }

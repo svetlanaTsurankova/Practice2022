@@ -1,30 +1,37 @@
 package com.java.senla.model.data.readers;
 
-import java.io.DataInputStream;
-import java.io.FileInputStream;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ImportCSVFile {
-    private List<String[]> newList = new ArrayList<>();
 
-    public List<String[]> getNewList() {
-        return newList;
-    }
-
-    public List<String[]> importFile(String file) {
+    public ArrayList<Object> importFile(String file) {
+        BufferedReader bufferedReader;
+        ArrayList<Object> line = new ArrayList<>();
+        String s;
         try {
-            FileInputStream fileInputStream = new FileInputStream(file);
-            DataInputStream dataInputStream = new DataInputStream(fileInputStream);
-            String line;
-            while ((line = dataInputStream.readLine()) != null) {
-                newList.add(line.split(";"));
+            bufferedReader = new BufferedReader(new FileReader(file));
+            while ((s = bufferedReader.readLine()) != null) {
+                line.add(convertStringCSV(s));
             }
-        } catch (
-                IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        return newList;
+        return line;
+    }
+
+    public ArrayList<String> convertStringCSV(String stringCSV) {
+        ArrayList<String> newArray = new ArrayList<>();
+        if (stringCSV != null) {
+            String[] split = stringCSV.split("\\s*;\\s*");
+            for (String s : split) {
+                if ((s == null) || !(s.length() == 0)) {
+                    newArray.add(s.trim());
+                }
+            }
+        }
+        return newArray;
     }
 }

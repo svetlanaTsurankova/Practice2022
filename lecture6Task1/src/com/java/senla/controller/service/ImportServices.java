@@ -2,6 +2,7 @@ package com.java.senla.controller.service;
 
 import com.java.senla.model.data.paths.FilePaths;
 import com.java.senla.model.service.ManagerHotel;
+import com.java.senla.view.Builder;
 import com.java.senla.view.IAction;
 
 public class ImportServices implements IAction {
@@ -10,7 +11,7 @@ public class ImportServices implements IAction {
     @Override
     public void execute() {
         System.out.print("Import service from CSV file  : ");
-        managerHotel.importServiceCsvFile(FilePaths.servicePatch);
+        managerHotel.importServiceCsvFile(FilePaths.SERVICE_PATCH);
         managerHotel.showAllServices();
     }
 }

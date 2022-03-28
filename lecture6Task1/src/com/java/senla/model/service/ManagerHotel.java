@@ -245,12 +245,13 @@ public class ManagerHotel {
         }
     }
 
-    public void importServiceCsvFile(String file) {
+    public Service importServiceCsvFile(String file) {
         managerService.importServiceByCsv(file);
+        return new Service();
     }
 
     public void importRoomCsvFile(String file) {
-        managerRoom.importRoomCsv(file);
+        managerRoom.importRoomByCsv(file);
     }
 
     public void importLodgerCsvFile(String file) {

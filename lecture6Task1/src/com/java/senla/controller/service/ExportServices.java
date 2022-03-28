@@ -13,6 +13,6 @@ public class ExportServices implements IAction {
     @Override
     public void execute() throws IOException {
         System.out.print("Export service CSV file  : ");
-        managerHotel.exportServiceCsvFile(FilePaths.expservicePatch);
+        managerHotel.exportServiceCsvFile(FilePaths.EXP_SERVICE_PATCH);
     }
 }
