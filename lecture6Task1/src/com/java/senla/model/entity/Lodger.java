@@ -89,15 +89,12 @@ public class Lodger {
 
     public String toString() {
         StringBuilder s = new StringBuilder();
-        s.append("Lodger id  ");
         s.append(idLodger);
-        s.append("Lodger of  ");
-        s.append(room);
-        s.append(" : ");
+        s.append(", ");
         s.append(fullName);
-        s.append(" check-in: ");
+        s.append(", ");
         s.append(dateCheckIn);
-        s.append(" check-out: ");
+        s.append(", ");
         s.append(dateCheckOut);
         return s.toString();
     }

@@ -1,15 +1,15 @@
 package com.java.senla.model.service.impl;
 
-import com.java.senla.model.data.readers.ImportCSVFile;
 import com.java.senla.model.entity.Room;
-import com.java.senla.model.entity.Service;
 import com.java.senla.model.entity.StatusRoomEnum;
 import com.java.senla.model.service.IManagerRoom;
+import com.java.senla.utils.readers.ImportCSVFile;
+import com.java.senla.utils.writers.ExportToCSVFile;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ManagerRoom implements IManagerRoom {
 
@@ -75,17 +75,28 @@ public class ManagerRoom implements IManagerRoom {
 
     public void importRoomByCsv(String file) {
         ImportCSVFile importCSVFile = new ImportCSVFile();
+        List<Room> room = new ArrayList<>();
         ArrayList<Object> list = importCSVFile.importFile(file);
         if (list != null)
             for (Object o : list) {
-                rooms.add(parseString((ArrayList<Object>) o));
+                room.add(parseString((List<Room>) o));
+                rooms = room.stream().map(old -> rooms.stream()
+                                .filter(update -> old.getId() == update.getId() &&
+                                        old.getNumberRoom() == update.getNumberRoom() &&
+                                        old.getPrice() == update.getPrice() &&
+                                        old.getCapacity() == update.getCapacity() &&
+                                        old.getStatus() == update.getStatus() &&
+                                        old.getStarsRoom() == update.getStarsRoom())
+                                .findFirst()
+                                .orElse(old))
+                        .collect(Collectors.toList());
             }
     }
 
-    public Room parseString(ArrayList<Object> listparse){
+    public Room parseString(List<Room> listparse) {
         Room newRoom = new Room();
-        if (listparse !=null){
-            for (int i=0;i< listparse.size();i++){
+        if (listparse != null) {
+            for (int i = 0; i < listparse.size(); i++) {
                 newRoom.setId(Integer.parseInt(String.valueOf(listparse.get(0))));
                 newRoom.setNumberRoom(Integer.parseInt(String.valueOf(listparse.get(1))));
                 newRoom.setPrice(Double.parseDouble(String.valueOf(listparse.get(2))));
@@ -97,14 +108,18 @@ public class ManagerRoom implements IManagerRoom {
         return newRoom;
     }
 
-
-    public void exportRoomCsvFile(String file) throws FileNotFoundException {
-        PrintWriter printWriter = new PrintWriter(file);
-        List<Room> arr = rooms;
-        for (Room room : arr) {
-            printWriter.println(room);
+    public void exportRoomCsvFile(String file) {
+        ExportToCSVFile exportToCSVFile = new ExportToCSVFile();
+        try {
+            if (rooms != null) {
+                List<Object> room = new ArrayList<>(rooms);
+                exportToCSVFile.writerToCSVFile(file, room);
+            } else {
+                System.out.println("List of services is empty");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        printWriter.close();
         System.out.println("Export OK");
     }
 }

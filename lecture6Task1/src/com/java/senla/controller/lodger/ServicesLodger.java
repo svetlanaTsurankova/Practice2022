@@ -8,7 +8,6 @@ import com.java.senla.view.IAction;
 import java.util.Scanner;
 
 public class ServicesLodger implements IAction {
-    ManagerHotel managerHotel = new ManagerHotel();
     ManagerLodger managerLodger = new ManagerLodger();
     ManagerService managerService = new ManagerService();
     Scanner scanner = new Scanner(System.in);
@@ -19,6 +18,6 @@ public class ServicesLodger implements IAction {
         Integer lodgerId = scanner.nextInt();
         System.out.print("Input service id 1..5 : ");
         Integer service = scanner.nextInt();
-        managerHotel.addService(managerLodger.getLodgerById(lodgerId), managerService.getServiceById(service));
+        ManagerHotel.managerHotel().addService(managerLodger.getLodgerById(lodgerId), managerService.getServiceById(service));
     }
 }

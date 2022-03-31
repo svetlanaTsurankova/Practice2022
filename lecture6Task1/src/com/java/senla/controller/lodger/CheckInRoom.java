@@ -9,7 +9,6 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 public class CheckInRoom implements IAction {
-    ManagerHotel managerHotel = new ManagerHotel();
     ManagerLodger managerLodger = new ManagerLodger();
     ManagerRoom managerRoom = new ManagerRoom();
     Scanner scanner = new Scanner(System.in);
@@ -26,7 +25,7 @@ public class CheckInRoom implements IAction {
         System.out.print("Input the out-date like \"YYYY-MM-DD\"...");
         String dat1 = scanner.next();
         LocalDate outDate = LocalDate.parse(dat1);
-        managerHotel.checkIn(managerLodger.getLodgerById(lodgerId), managerRoom.getRoomByNumber(number), inDate, outDate);
+        ManagerHotel.managerHotel().checkIn(managerLodger.getLodgerById(lodgerId), managerRoom.getRoomByNumber(number), inDate, outDate);
 
     }
 }

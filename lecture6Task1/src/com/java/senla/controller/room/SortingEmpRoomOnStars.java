@@ -5,12 +5,11 @@ import com.java.senla.model.sorters.SortingRoomByStars;
 import com.java.senla.view.IAction;
 
 public class SortingEmpRoomOnStars implements IAction {
-    ManagerHotel managerHotel = new ManagerHotel();
 
     @Override
     public void execute() {
         System.out.println("Sorting free room by stars: ");
-        managerHotel.sortFreeRoom(new SortingRoomByStars().getSortingRoomByStars());
-        managerHotel.showAllFreeRooms();
+        ManagerHotel.managerHotel().sortFreeRoom(new SortingRoomByStars().getSortingRoomByStars());
+        ManagerHotel.managerHotel().showAllFreeRooms();
     }
 }

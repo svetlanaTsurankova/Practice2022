@@ -8,7 +8,6 @@ import java.util.Scanner;
 
 public class UpdatePriceRoom implements IAction {
     ManagerRoom managerRoom = new ManagerRoom();
-    ManagerHotel managerHotel = new ManagerHotel();
     Scanner scanner = new Scanner(System.in);
 
     @Override
@@ -17,7 +16,7 @@ public class UpdatePriceRoom implements IAction {
         Integer number = scanner.nextInt();
         System.out.println("input price room : ");
         double price = scanner.nextDouble();
-        managerHotel.changePriceRoom(managerRoom.getRoomById(number), price);
-        managerHotel.printDetailsOfRoom(managerRoom.getRoomById(number));
+        ManagerHotel.managerHotel().changePriceRoom(managerRoom.getRoomById(number), price);
+        ManagerHotel.managerHotel().printDetailsOfRoom(managerRoom.getRoomById(number));
     }
 }

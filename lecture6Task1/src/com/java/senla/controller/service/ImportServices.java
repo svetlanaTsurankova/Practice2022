@@ -1,17 +1,15 @@
 package com.java.senla.controller.service;
 
-import com.java.senla.model.data.paths.FilePaths;
+import com.java.senla.utils.FilePaths;
 import com.java.senla.model.service.ManagerHotel;
-import com.java.senla.view.Builder;
 import com.java.senla.view.IAction;
 
 public class ImportServices implements IAction {
-    ManagerHotel managerHotel = new ManagerHotel();
 
     @Override
     public void execute() {
-        System.out.print("Import service from CSV file  : ");
-        managerHotel.importServiceCsvFile(FilePaths.SERVICE_PATCH);
-        managerHotel.showAllServices();
+        System.out.println("Import service from CSV file  : ");
+        ManagerHotel.managerHotel().importServiceCsvFile(FilePaths.SERVICE_PATCH);
+        ManagerHotel.managerHotel().showAllServices();
     }
 }

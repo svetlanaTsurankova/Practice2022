@@ -40,21 +40,11 @@ public class Service {
 
     public String toString() {
         StringBuilder s = new StringBuilder();
-        s.append("Id : ");
         s.append(id);
-        s.append(" Service : ");
+        s.append(", ");
         s.append(serviceName);
-        s.append(" ");
+        s.append(", ");
         s.append(price);
-        s.append("  price");
         return s.toString();
-    }
-    public String getEntityParameters() {
-        return String.valueOf(new StringBuilder().
-                append(id).
-                append(" ").
-                append(serviceName).
-                append(" ").
-                append(price));
     }
 }

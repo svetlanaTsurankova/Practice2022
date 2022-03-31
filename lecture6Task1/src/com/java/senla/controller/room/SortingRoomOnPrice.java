@@ -5,12 +5,11 @@ import com.java.senla.model.sorters.SortingRoomByPrice;
 import com.java.senla.view.IAction;
 
 public class SortingRoomOnPrice implements IAction {
-    ManagerHotel managerHotel = new ManagerHotel();
 
     @Override
     public void execute() {
         System.out.println("Sorting room by price: ");
-        managerHotel.sortRoom(new SortingRoomByPrice().getSortingRoomByPrice());
-        managerHotel.showAllRooms();
+        ManagerHotel.managerHotel().sortRoom(new SortingRoomByPrice().getSortingRoomByPrice());
+        ManagerHotel.managerHotel().showAllRooms();
     }
 }

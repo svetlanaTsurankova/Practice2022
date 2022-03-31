@@ -5,11 +5,10 @@ import com.java.senla.model.sorters.SortingLodgerDate;
 import com.java.senla.view.IAction;
 
 public class SortedLodgersByDate implements IAction {
-    ManagerHotel managerHotel = new ManagerHotel();
 
     @Override
     public void execute() {
-        managerHotel.sortLodger(new SortingLodgerDate().getSortingLodgerByDate());
-        managerHotel.showAllLodger();
+        ManagerHotel.managerHotel().sortLodger(new SortingLodgerDate().getSortingLodgerByDate());
+        ManagerHotel.managerHotel().showAllLodger();
     }
 }

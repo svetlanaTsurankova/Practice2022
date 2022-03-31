@@ -8,7 +8,6 @@ import com.java.senla.view.IAction;
 import java.util.Scanner;
 
 public class AddRoom implements IAction {
-    ManagerHotel managerHotel = new ManagerHotel();
     Scanner scanner = new Scanner(System.in);
 
     @Override
@@ -21,7 +20,7 @@ public class AddRoom implements IAction {
         double price = scanner.nextDouble();
         System.out.print("input capacity room: ");
         int capacity = scanner.nextInt();
-        managerHotel.createRoom(new Room(11, number, price, capacity, StatusRoomEnum.SERVICED, stars));
+        ManagerHotel.managerHotel().createRoom(new Room(11, number, price, capacity, StatusRoomEnum.SERVICED, stars));
         System.out.printf("New room : numberRoom %s , price : %.2f , capacity %s ,stars %s \n",
                 11, price, capacity, stars);
     }

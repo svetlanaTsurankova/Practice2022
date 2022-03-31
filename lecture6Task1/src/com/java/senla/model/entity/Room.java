@@ -74,6 +74,7 @@ public class Room {
 
     public Room() {
     }
+
     public Room(int numberRoom) {
         this.numberRoom = numberRoom;
     }
@@ -89,27 +90,21 @@ public class Room {
 
     public String toString() {
         StringBuilder s = new StringBuilder();
-        s.append("Room #");
+        s.append(id);
+        s.append(", ");
         s.append(numberRoom);
-        s.append(" can hold up to ");
+        s.append(", ");
         s.append(capacity);
-        s.append(" lodgers. Rate: ");
+        s.append(", ");
         s.append(starsRoom);
-        s.append(". price is ");
+        s.append(", ");
         s.append(price);
-        s.append("  ");
+        s.append(", ");
+        s.append(status);
         if (status == StatusRoomEnum.OCCUPIED) {
-            s.append("Room is occupied. ");
         } else if (status == StatusRoomEnum.SERVICED) {
-            s.append("Room is being serviced.");
         } else if (status == StatusRoomEnum.RENOVATE) {
-            s.append("Room is being renovate.");
         }
         return s.toString();
-    }
-
-    public String getEntityParameters() {
-        return String.valueOf(new StringBuilder().append(id).append(" ").append(numberRoom).append(" ").append(capacity)
-                .append(" ").append(starsRoom).append(" ").append(price));
     }
 }

@@ -7,12 +7,11 @@ import com.java.senla.view.IAction;
 import java.util.Scanner;
 
 public class AddLodger implements IAction {
-    ManagerHotel managerHotel = new ManagerHotel();
     Scanner scanner = new Scanner(System.in);
 
     @Override
     public void execute() {
         System.out.print("Input lodger name ...");
-        managerHotel.receiveLodger(new Lodger(scanner.next()));
+        ManagerHotel.managerHotel().receiveLodger(new Lodger(scanner.next()));
     }
 }

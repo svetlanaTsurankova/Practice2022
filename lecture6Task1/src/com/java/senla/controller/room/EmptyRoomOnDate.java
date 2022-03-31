@@ -7,14 +7,13 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 public class EmptyRoomOnDate implements IAction {
-    ManagerHotel managerHotel = new ManagerHotel();
     Scanner scanner = new Scanner(System.in);
 
     @Override
     public void execute() {
         System.out.print("Input the in-date like \"YYYY-MM-DD\" ...");
         LocalDate inDate = LocalDate.parse(scanner.next());
-        managerHotel.showEmptyRoomOnDate(inDate);
+        ManagerHotel.managerHotel().showEmptyRoomOnDate(inDate);
 
     }
 }

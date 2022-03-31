@@ -5,12 +5,11 @@ import com.java.senla.model.sorters.SortingRoomByCapacity;
 import com.java.senla.view.IAction;
 
 public class SortingRoomOnCapacity implements IAction {
-    ManagerHotel managerHotel = new ManagerHotel();
 
     @Override
     public void execute() {
         System.out.println("Sorting room by capacity: ");
-        managerHotel.sortRoom(new SortingRoomByCapacity().getSortingRoomByCapacity());
-        managerHotel.showAllRooms();
+        ManagerHotel.managerHotel().sortRoom(new SortingRoomByCapacity().getSortingRoomByCapacity());
+        ManagerHotel.managerHotel().showAllRooms();
     }
 }

@@ -7,7 +7,6 @@ import com.java.senla.view.IAction;
 import java.util.Scanner;
 
 public class ChangeServicePrice implements IAction {
-    ManagerHotel managerHotel = new ManagerHotel();
     ManagerService managerService = new ManagerService();
     Scanner scanner = new Scanner(System.in);
 
@@ -17,6 +16,6 @@ public class ChangeServicePrice implements IAction {
         Integer id = scanner.nextInt();
         System.out.print("Input service price : ");
         double price = scanner.nextDouble();
-        managerHotel.changePriceService(managerService.getServiceById(id), price);
+        ManagerHotel.managerHotel().changePriceService(managerService.getServiceById(id), price);
     }
 }

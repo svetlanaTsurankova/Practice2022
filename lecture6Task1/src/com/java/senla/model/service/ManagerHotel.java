@@ -9,16 +9,23 @@ import com.java.senla.model.service.impl.ManagerRoom;
 import com.java.senla.model.service.impl.ManagerService;
 import com.java.senla.model.sorters.SortingServiceByPrice;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Comparator;
 import java.util.List;
 
 public class ManagerHotel {
-    ManagerRoom managerRoom = new ManagerRoom();
-    ManagerService managerService = new ManagerService();
-    ManagerLodger managerLodger = new ManagerLodger();
+    private static ManagerHotel hotelManager;
+    public ManagerRoom managerRoom = new ManagerRoom();
+    public ManagerService managerService = new ManagerService();
+    public ManagerLodger managerLodger = new ManagerLodger();
+
+    public static ManagerHotel managerHotel() {
+        if (hotelManager == null) {
+            hotelManager = new ManagerHotel();
+        }
+        return hotelManager;
+    }
 
     public void showAllRooms() {
         List<Room> rooms = managerRoom.getRooms();
@@ -245,9 +252,8 @@ public class ManagerHotel {
         }
     }
 
-    public Service importServiceCsvFile(String file) {
+    public void importServiceCsvFile(String file) {
         managerService.importServiceByCsv(file);
-        return new Service();
     }
 
     public void importRoomCsvFile(String file) {
@@ -258,15 +264,15 @@ public class ManagerHotel {
         managerLodger.importLodgerCsv(file);
     }
 
-    public void exportServiceCsvFile(String file) throws IOException {
+    public void exportServiceCsvFile(String file) {
         managerService.exportServiceCsvFile(file);
     }
 
-    public void exportLodgerCsvFile(String file) throws IOException {
+    public void exportLodgerCsvFile(String file) {
         managerLodger.exportLodgerCsvFile(file);
     }
 
-    public void exportRoomCsvFile(String file) throws IOException {
+    public void exportRoomCsvFile(String file) {
         managerRoom.exportRoomCsvFile(file);
     }
 

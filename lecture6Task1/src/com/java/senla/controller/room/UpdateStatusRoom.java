@@ -8,12 +8,11 @@ import java.util.Scanner;
 
 public class UpdateStatusRoom implements IAction {
     ManagerRoom managerRoom = new ManagerRoom();
-    ManagerHotel managerHotel = new ManagerHotel();
     Scanner scanner = new Scanner(System.in);
 
     @Override
     public void execute() {
         System.out.println("input id room 1..10 : ");
-        managerHotel.changeStatusRoom(managerRoom.getRoomById(scanner.nextInt()));
+        ManagerHotel.managerHotel().changeStatusRoom(managerRoom.getRoomById(scanner.nextInt()));
     }
 }

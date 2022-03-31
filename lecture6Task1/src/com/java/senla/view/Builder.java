@@ -3,7 +3,6 @@ package com.java.senla.view;
 import com.java.senla.controller.lodger.*;
 import com.java.senla.controller.room.*;
 import com.java.senla.controller.service.*;
-import com.java.senla.model.service.ManagerHotel;
 
 public class Builder {
     private final Menu rootMenu = new Menu("Root menu");

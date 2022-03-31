@@ -1,28 +1,23 @@
 package com.java.senla.model.service.impl;
 
 
-import com.java.senla.model.data.readers.ImportCSVFile;
 import com.java.senla.model.entity.Service;
 import com.java.senla.model.service.IManagerService;
+import com.java.senla.utils.readers.ImportCSVFile;
+import com.java.senla.utils.writers.ExportToCSVFile;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class ManagerService implements IManagerService {
     private int allService;
-  private List<Service> services;
+    private List<Service> services = new ArrayList<>();
 
     public ManagerService() {
-        services= new ArrayList<>();
-        services.add(new Service(1, "cleaning", 5.26));
-        services.add(new Service(2, "wi-fi in the room", 6.25));
-        services.add(new Service(3, "food in the room", 7.63));
-        services.add(new Service(4, "car rental", 9.72));
-        services.add(new Service(5, "gym", 5.14));
-
     }
 
     public void addService(Service service) {
@@ -53,36 +48,46 @@ public class ManagerService implements IManagerService {
         return sortService;
     }
 
-    public void exportServiceCsvFile(String file) throws FileNotFoundException {
-        PrintWriter printWriter = new PrintWriter(file);
-        for (Service service : services) {
-            printWriter.println(service);
+    public void exportServiceCsvFile(String file) {
+        ExportToCSVFile exportToCSVFile = new ExportToCSVFile();
+        try {
+            if (services != null) {
+                List<Object> service = new ArrayList<>(services);
+                exportToCSVFile.writerToCSVFile(file, service);
+            } else {
+                System.out.println("List of services is empty");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        printWriter.close();
         System.out.println("Export OK");
     }
 
-    public List<Service> importServiceByCsv(String file) {
+    public void importServiceByCsv(String file) {
         ImportCSVFile importCSVFile = new ImportCSVFile();
+        List<Service> service = new ArrayList<>();
         ArrayList<Object> list = importCSVFile.importFile(file);
         if (list != null)
             for (Object o : list) {
-                services.add(parseString((ArrayList<Object>) o));
+                service.add(parseString((List<Service>) o));
+                services = service.stream().map(old -> services.stream()
+                                .filter(update -> old.getId() == update.getId() &&
+                                        Objects.equals(old.getServiceName(), update.getServiceName()) &&
+                                        old.getPrice() == update.getPrice())
+                                .findFirst()
+                                .orElse(old))
+                        .collect(Collectors.toList());
             }
-        return services;
     }
 
-    public Service parseString(ArrayList<Object> listparse) {
+    public Service parseString(List<Service> listparse) {
         Service service = new Service();
-        if (listparse != null) {
-            for (int i = 0; i < listparse.size(); i++) {
-                service.setId(Integer.parseInt(String.valueOf(listparse.get(0))));
-                service.setServiceName(String.valueOf(listparse.get(1)));
-                service.setPrice(Double.parseDouble(String.valueOf(listparse.get(2))));
-            }
+        for (int i = 0; i < listparse.size(); i++) {
+            service.setId(Integer.parseInt(String.valueOf(listparse.get(0))));
+            service.setServiceName(String.valueOf(listparse.get(1)));
+            service.setPrice(Double.parseDouble(String.valueOf(listparse.get(2))));
         }
         return service;
     }
-
 }
 

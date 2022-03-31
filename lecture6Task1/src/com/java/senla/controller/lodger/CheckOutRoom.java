@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 public class CheckOutRoom implements IAction {
     Scanner scanner = new Scanner(System.in);
-    ManagerHotel managerHotel = new ManagerHotel();
     ManagerLodger managerLodger = new ManagerLodger();
     ManagerRoom managerRoom = new ManagerRoom();
 
@@ -19,6 +18,6 @@ public class CheckOutRoom implements IAction {
         Integer lodgerId = scanner.nextInt();
         System.out.print("Input the number Room...");
         Integer room = scanner.nextInt();
-        managerHotel.checkOut(managerLodger.getLodgerById(lodgerId), managerRoom.getRoomByNumber(room));
+        ManagerHotel.managerHotel().checkOut(managerLodger.getLodgerById(lodgerId), managerRoom.getRoomByNumber(room));
     }
 }
