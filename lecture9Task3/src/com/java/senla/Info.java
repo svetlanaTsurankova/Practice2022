@@ -11,7 +11,7 @@ public class Info {
         while (buffer.size() == BUFFER_MAX_SIZE) {
             try {
                 wait();
-                System.out.println(" wait a ");
+                System.out.println(" wait producer");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -25,7 +25,7 @@ public class Info {
         while (buffer.size() == 0) {
             try {
                 wait();
-                System.out.println(" wait  t ");
+                System.out.println(" wait  consumer ");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

@@ -3,7 +3,7 @@ package com.java.senla;
 public class ThreadTwo implements Runnable {
 
     public void run() {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 200; i++) {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {

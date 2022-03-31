@@ -1,15 +1,15 @@
 package com.java.senla;
 
 public class TreadSynchronized implements Runnable {
-    private static Object obj = new Object();
+    private static final Object obj = new Object();
 
     public void run() {
         try {
             synchronized (obj) {
                 obj.wait();
             }
-        } catch (InterruptedException var4) {
-            var4.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
